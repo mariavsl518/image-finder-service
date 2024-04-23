@@ -1,0 +1,10 @@
+.imageCard{
+    list-style: none;
+    max-width: 400px;
+    max-height: 250px;
+    overflow: hidden;
+    object-fit:contain;
+}
+
+.imageCardImg{
+}

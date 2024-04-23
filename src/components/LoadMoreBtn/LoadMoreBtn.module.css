@@ -1,0 +1,9 @@
+.loadMore{
+    background-color: #484848;
+    color: #fff;
+}
+
+.loadMore:hover{
+    background-color: #636363;
+    border-color: transparent;
+}
