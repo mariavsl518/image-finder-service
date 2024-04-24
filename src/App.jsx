@@ -7,7 +7,6 @@ import {ImageModal} from './components/ImageModal/ImageModal';
 import { Loader } from './components/Loader/Loader';
 import {ErrorMessage} from './components/ErrorMessage/ErrorMessage';
 import ReactModal from 'react-modal';
-import toast, {Toaster} from 'react-hot-toast';
 ReactModal.setAppElement('#root');
 
 import './App.css'
@@ -27,9 +26,6 @@ export default function App() {
 
 
   const handleSearch = (keyWord) => {
-    if(!keyWord){
-      return toast('Search form can not be empty.');
-    };
     setQuery(keyWord);
     setPage(1);
     setImages([]);
@@ -71,7 +67,6 @@ export default function App() {
 
   return (
     <>
-    <Toaster/>
    {!modalIsOpen && <SearchBar onSearch={handleSearch}/>}
     {!error ? 
     <ImageGallery collection={images}

@@ -1,9 +1,12 @@
 import React from 'react';
-import css from './SearchBar.module.css'
+import css from './SearchBar.module.css';
+import toast, {Toaster} from 'react-hot-toast';
+
 
 export const SearchBar = ({onSearch}) => {
   return (
     <header className={css.searchBar}>
+      <Toaster/>
       <form className={css.searchForm}
     
       onSubmit={(evt)=>{
@@ -11,7 +14,9 @@ export const SearchBar = ({onSearch}) => {
         evt.preventDefault();
         const keyWord=evt.target.elements.input.value
         onSearch(keyWord);
-
+        if(!keyWord){
+          return toast('Search form can not be empty.');
+        };
       }}>
 
         <input
@@ -26,7 +31,7 @@ export const SearchBar = ({onSearch}) => {
         <button 
         className={css.searchBtn}
         type="submit">Search</button>
-        
+
       </form>
     </header>
   )
