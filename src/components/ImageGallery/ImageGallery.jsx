@@ -7,9 +7,10 @@ export const ImageGallery = ({collection, openModal}) => {
     <ul className={css.imageList}>
       {
       collection.map((item) =>(
-          <ImageCard 
+          <ImageCard
+          item={item}
           openModal={openModal}
-          key={item.id} 
+          key={collection.indexOf(item)} 
           url={item.urls.small} 
           alt={item.alt_description}
           />

@@ -7,6 +7,8 @@ import {ImageModal} from './components/ImageModal/ImageModal';
 import { Loader } from './components/Loader/Loader';
 import {ErrorMessage} from './components/ErrorMessage/ErrorMessage';
 import ReactModal from 'react-modal';
+import toast, {Toaster} from 'react-hot-toast';
+ReactModal.setAppElement('#root');
 
 import './App.css'
 
@@ -14,15 +16,20 @@ export default function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  
   const [page, setPage] = useState(1);
   const [query , setQuery] = useState('');
-
+  
   const [imageCard, setImageCard] = useState({})
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const [showBtn, setShowBtn] = useState(false);
+
 
   const handleSearch = (keyWord) => {
+    if(!keyWord){
+      return toast('Search form can not be empty.');
+    };
     setQuery(keyWord);
     setPage(1);
     setImages([]);
@@ -32,17 +39,13 @@ export default function App() {
     setPage(page + 1)
   }
 
-  function openModal() {
-    setModalIsOpen(true);
+  function openModal(item) {
+    setImageCard(item);
+    setModalIsOpen(true)
   }
-
-  function closeModal() {
-    setModalIsOpen(false);
-  }
-
 
   useEffect(() => {
-    if(query === ''){
+    if(!query){
       return;
     }
 
@@ -50,10 +53,12 @@ export default function App() {
       try {
       setError(false)
       setIsLoading(true)
-      const fetchData = await fetchImages(query, page)
+      const fetchData = await fetchImages(query, page);
+      const totalPages = fetchData.total_pages;
       setImages((prevImg)=>{
         return[...prevImg, ...fetchData.results];
       });
+      setShowBtn(totalPages && totalPages !== page)
       } catch (error) {
         setError(true)
       }
@@ -66,26 +71,25 @@ export default function App() {
 
   return (
     <>
-    <SearchBar onSearch={handleSearch}/>
+    <Toaster/>
+   {!modalIsOpen && <SearchBar onSearch={handleSearch}/>}
     {!error ? 
     <ImageGallery collection={images}
     openModal={openModal}
     /> 
     : <ErrorMessage/>}
     
-    {images.length>0 && !isLoading &&(
-    <LoadMoreBtn loadMore={handleLoadMore}/>)}
+    {showBtn && 
+    !isLoading && 
+    (<LoadMoreBtn loadMore={handleLoadMore}/>)}
 
     {isLoading && <Loader/>}
 
-    {
-    modalIsOpen && 
-    <ImageModal collection={images} 
-    closeModal={closeModal}
+    {modalIsOpen && <ImageModal 
+    modalIsOpen={modalIsOpen}
+    setModalIsOpen={setModalIsOpen}
+    imageCard={imageCard}
     />}
     </>
   )
 }
-
-ReactModal.setAppElement(<ImageModal/>);
-

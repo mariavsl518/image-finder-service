@@ -4,7 +4,5 @@
     max-height: 250px;
     overflow: hidden;
     object-fit:contain;
-}
-
-.imageCardImg{
+    cursor: pointer;
 }

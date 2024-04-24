@@ -1,0 +1,42 @@
+.imgDiv{
+    max-width: 95%;
+    max-height: 95%;
+    margin: 0 auto;
+}
+
+.image{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.closeBtn{
+    width: 40px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: transparent;
+    color: beige;
+}
+
+.closeBtn:hover{
+    background-color: #7b7b7b;
+    border: none;
+}
+
+.descriptionBox{
+    color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.link{
+    color: beige;
+    cursor: pointer;
+}

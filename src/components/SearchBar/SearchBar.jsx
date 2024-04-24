@@ -5,12 +5,15 @@ export const SearchBar = ({onSearch}) => {
   return (
     <header className={css.searchBar}>
       <form className={css.searchForm}
-      
+    
       onSubmit={(evt)=>{
+
         evt.preventDefault();
         const keyWord=evt.target.elements.input.value
-        onSearch(keyWord)
+        onSearch(keyWord);
+
       }}>
+
         <input
           className={css.searchInput}
           name='input'
@@ -19,9 +22,11 @@ export const SearchBar = ({onSearch}) => {
           autoFocus
           placeholder="Search images and photos"
         />
+
         <button 
         className={css.searchBtn}
         type="submit">Search</button>
+        
       </form>
     </header>
   )
