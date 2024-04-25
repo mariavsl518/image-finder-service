@@ -3,9 +3,7 @@ import css from './ImageCard.module.css'
 
 export const ImageCard = ({id, url, alt, item, openModal}) => {
   return (
-        <li className={css.imageCard}
-        key={id}
-        >
+        <li className={css.imageCard}>
           <div>
             <img 
             onClick={()=>openModal(item)}

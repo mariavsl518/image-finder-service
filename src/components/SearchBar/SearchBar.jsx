@@ -12,11 +12,12 @@ export const SearchBar = ({onSearch}) => {
       onSubmit={(evt)=>{
 
         evt.preventDefault();
-        const keyWord=evt.target.elements.input.value
-        onSearch(keyWord);
+        const keyWord=evt.target.elements.input.value;
         if(!keyWord){
           return toast('Search form can not be empty.');
         };
+        onSearch(keyWord);
+        
       }}>
 
         <input
