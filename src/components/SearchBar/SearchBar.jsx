@@ -15,7 +15,7 @@ export const SearchBar = ({onSearch}) => {
         const keyWord=evt.target.elements.input.value;
         if(!keyWord){
           return toast('Search form can not be empty.');
-        };
+        }
         onSearch(keyWord);
         
       }}>

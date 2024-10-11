@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ReactModal from 'react-modal';
 import css from './ImageModal.module.css'
 
@@ -24,7 +24,7 @@ export const ImageModal = ({imageCard, modalIsOpen, setModalIsOpen}) => {
             bottom: '10%',
             height: 'fit-content',
             width: 'fit-content',
-            padding:'25px',
+            padding:'30px 30px 0 30px',
           },
         }}
       >
