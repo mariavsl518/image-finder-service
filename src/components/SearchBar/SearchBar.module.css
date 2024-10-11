@@ -19,6 +19,7 @@
 }
 
 .searchInput{
+    outline: none;
     height: 30px;
     width: 300px;
 }
@@ -31,4 +32,8 @@
 .searchBtn:hover{
     border-color: transparent;
     background-color: #636363;
+}
+
+.searchBtn:focus{
+    outline: none;
 }

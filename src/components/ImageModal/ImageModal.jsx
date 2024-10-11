@@ -34,7 +34,7 @@ export const ImageModal = ({imageCard, modalIsOpen, setModalIsOpen}) => {
         <img src={imageCard.urls.regular} alt={imageCard.alt_description} 
         className={css.image}/>
           <div className={css.descriptionBox}>
-          <p>Author:{imageCard.user.name}</p>
+          <p>Author: {imageCard.user.name}</p>
           <p>Likes: {imageCard.likes}</p>
           <a className={css.link} target='blank' href={imageCard.links.download}>Click to download</a>
           </div>
